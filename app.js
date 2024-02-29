@@ -26,7 +26,7 @@ app.use(helmet({
 
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(session({
     secret: sessionSecret,
     resave: true,
