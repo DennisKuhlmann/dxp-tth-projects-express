@@ -1,0 +1,48 @@
+/* Added custom colors for later */
+:root {
+
+    /* Green */
+    --dxp-lightgreen: rgba(83, 177, 107, 1);
+    --dxp-blue: rgba(54, 89, 162, 1);
+    --dxp-graywhite: rgba(237, 239, 240, 1);
+    --dxp-gray: rgba(62, 71, 79, 1);
+    --dxp-white: rgba(255, 255, 255, 1);
+    --dxp-darkmagenta: rgba(155, 59, 90, 1);
+    --dxp-darkcyan: rgba(0,130, 151, 1);
+    --dxp-bluegreen: rgba(54, 140, 191, 1);
+    --dxp-yellow: rgba(246, 208, 100, 1);
+
+
+
+
+
+
+
+}
+
+/* Head and HTML */
+html {
+    height : 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto Light", "Helvetica Neue", "Helvetica", "Arial","sans-serif";
+}
+
+body {
+ background-color: var(--dxp-white);
+}
+
+
+
+
+
+
+
+
+
+
+
+
