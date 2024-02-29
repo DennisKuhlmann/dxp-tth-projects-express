@@ -1,0 +1,24 @@
+{
+  "name": "dxp-tth-projects-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-router": "^0.0.1",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "jquery": "^3.7.1",
+    "mysql2": "^3.9.2",
+    "nodemon": "^3.1.0",
+    "serve-favicon": "^2.5.0"
+  }
+}
