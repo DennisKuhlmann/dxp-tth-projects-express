@@ -1,0 +1,43 @@
+<%- include('../utils/head', {pageTitle: 'Home'}); -%>
+<%- include('../utils/navigation'); -%>
+
+<body>
+
+<h1 class="text-center mt-3" style="color: white;">My To Do List</h1>
+
+    <div class="form-check form-switch d-flex justify-content-center">
+        <input class="form-check-input" type="checkbox" role="switch" id="toDoSwitch">
+        <label class="form-check-label ms-3" for="toDoSwitch">Switch between Database and UL List </label>
+
+    </div>
+
+
+<div class="container alert alert-danger d-flex justify-content-center" role="alert" id="inputAlert" style="width: 500px; display: none !important;">
+
+</div>
+
+    <div class="container d-flex justify-content-center mt-3">
+        <label for="toDoContent"></label>
+        <input type="text" class="form-control" id="toDoContent" placeholder="Add a to do">
+        <button class="btn ms-1" id="addToDo">Add To Do</button>
+    </div>
+
+<div id="switchContent">
+
+    <div class="container mt-3 d-flex justify-content-center">
+        <ul id="ul_toDo">
+            <!-- LI -->
+        </ul>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+
