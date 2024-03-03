@@ -12,12 +12,6 @@
     --dxp-bluegreen: rgba(54, 140, 191, 1);
     --dxp-yellow: rgba(246, 208, 100, 1);
 
-
-
-
-
-
-
 }
 
 /* Head and HTML */
@@ -32,8 +26,58 @@ html {
 }
 
 body {
- background-color: var(--dxp-blue);
+    background-color: var(--dxp-blue);
 }
+
+
+/* ====== Start Navigation ===== */
+
+.navbar {
+    background-color: var(--dxp-gray);
+}
+.navbar li a {
+    color: var(--dxp-white);
+}
+
+.navbar li a:hover {
+    color: var(--dxp-yellow);
+}
+
+.nav-link:focus {
+    color: white;
+}
+
+/* Dropdown Nav links */
+.dropdown .nav-link:focus {
+    color: white;
+}
+
+
+.dropdown-menu {
+    background-color: var(--dxp-blue);
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: transparent;
+}
+
+
+/* ====== END Navigation ===== */
+
+/* A */
+#toDoContent {
+    width: 500px;
+    border: 2px solid var(--dxp-darkmagenta);
+}
+
+#addToDo {
+    background-color: var(--dxp-darkmagenta);
+    color: white;
+    width: 120px;
+}
+
+
+
 
 
 
