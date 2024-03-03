@@ -43,10 +43,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Router
 const indexRouter = require("./routes/indexRouter");
+const todolistRouter = require("./routes/todolistRouter");
 
 
 
 app.use("/", indexRouter);
+app.use("/todolist", todolistRouter);
 
 
 // CREATE A SERVER
