@@ -21,21 +21,21 @@ export function addToDo() {
                             "item": input.val()
                         })
                             .done(function(response) {
-                                statusTexts.success.text(response).css("display", "block").slideUp(3000);
+                                statusTexts.success.text(response).css("display", "block").delay(2000).slideUp(3000);
                                 input.val("");
                             })
                             .fail(function(jqXHR, textStatus, errorMessage) {
-                                statusTexts.failed.text(errorMessage).css("display", "block").slideUp(3000);
+                                statusTexts.failed.text(errorMessage).css("display", "block").delay(2000).slideUp(3000);
                             });
                     } else {
                     ul.append(`<li> ${input.val()} </li>`);
                     console.log("ToDo added");
-                    statusTexts.success.text('To-Do added!').css("display", "block").slideUp(3000);
+                    statusTexts.success.text('To-Do added!').css("display", "block").delay(2000).slideUp(3000);
                     input.val("");
                 }// if databaseAvailable
 
         } else {
-            statusTexts.failed.text('Please enter a To-Do!').css("display", "block").slideUp(3000);
+            statusTexts.failed.text('Please enter a To-Do!').css("display", "block").delay(2000).slideUp(3000);
         } // if input is empty
 
     }); // button on click
