@@ -7,7 +7,10 @@ export function addToDo() {
     let button = $('#addToDo');
     let input = $('#toDoContent');
     let ul = $('#ul_toDo');
-    let alertDiv = $('#inputAlert');  // Name geändert
+    let statusTexts = {
+        success: $('#statusTextSuccess'),
+        failed: $('#statusTextFailed')
+    };
 
     button.on('click', function() {
 
@@ -18,25 +21,29 @@ export function addToDo() {
                             "item": input.val()
                         })
                             .done(function(response) {
-                                alertDiv.text(response).slideUp(2000);
-                                //alertDiv.css('display', 'block');
+                                statusTexts.success.text(response).css("display", "block").slideUp(3000);
                                 input.val("");
                             })
                             .fail(function(jqXHR, textStatus, errorMessage) {
-                                //alertDiv.text(errorMessage).slideUp(2000);
-                                alertDiv.css('display', 'block');
+                                statusTexts.failed.text(errorMessage).css("display", "block").slideUp(3000);
                             });
                     } else {
                     ul.append(`<li> ${input.val()} </li>`);
+                    console.log("ToDo added");
+                    statusTexts.success.text('To-Do added!').css("display", "block").slideUp(3000);
                     input.val("");
                 }// if databaseAvailable
 
         } else {
-            alertDiv.text('Please enter a To-Do!').slideUp(2000);
-            alertDiv.css('display', 'block');
+            statusTexts.failed.text('Please enter a To-Do!').css("display", "block").slideUp(3000);
         } // if input is empty
 
     }); // button on click
+
+
+
+
+
 
     let switch_toDo = $('#toDoSwitch');
     let switchContent = $('#switchContent');
