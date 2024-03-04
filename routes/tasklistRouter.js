@@ -3,10 +3,10 @@ let router = express.Router();
 let db = require('../config/db');
 
 router.get("/", (req, res) => {
-    res.render('pages/to_do_list');
+    res.render('pages/task_list');
 });
 
-router.post('/addtodo', (req, res) => {
+router.post('/addtask', (req, res) => {
    let item = req.body.item;
 
 
@@ -28,7 +28,7 @@ router.post('/addtodo', (req, res) => {
 });
 
 // setup datatables
-router.post('/todo_list_datatables', (req, res) => {
+router.post('/task_list_datatables', (req, res) => {
     let draw = req.body.draw;
     let orderDirection = req.body.order[0].dir;
     let start = parseInt(req.body.start);
@@ -112,7 +112,7 @@ router.post("/update_task", (req, res) => {
             console.error(err);
             return res.status(500).json({ error: 'Database error: ' + err.message });
         }
-        res.json({ message: "To Do deleted successfully", data: result });
+        res.json({ message: "To Updated successfully", data: result });
     });
 });
 

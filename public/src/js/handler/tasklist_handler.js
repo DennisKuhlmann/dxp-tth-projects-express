@@ -2,12 +2,11 @@
 
 
 // Declare your variable outside of both click and ready functions
-let todoListDatatable;
+let taskListDatatable;
 
-export function todoListHandler() {
-    let button = $('#addToDo');
-    let input = $('#toDoContent');
-    let ul = $('#ul_toDo');
+export function taskListHandler() {
+    let button = $('#addTask');
+    let input = $('#taskContent');
     let statusTexts = {
         success: $('#statusTextSuccess'),
         failed: $('#statusTextFailed')
@@ -17,13 +16,13 @@ export function todoListHandler() {
         // if input is empty
         if(input.val() !== "") {
 
-                jQuery.post('/todolist/addtodo', {
+                jQuery.post('/tasklist/addtask', {
                     "item": input.val()
                 })
                     .done(function(response) {
                         statusTexts.success.text(response).css("display", "block").delay(2000).slideUp(3000);
-                        if(todoListDatatable) {
-                            todoListDatatable.ajax.reload();
+                        if(taskListDatatable) {
+                            taskListDatatable.ajax.reload();
                         }
                         input.val("");
                     })
@@ -35,15 +34,6 @@ export function todoListHandler() {
 
 
     }); // button on click
-
-    let switch_toDo = $('#toDoSwitch');
-    let switchContent = $('#switchContent');
-
-    switch_toDo.on('change', function() {
-        console.log("Switched");
-        switchContent.toggle();
-    });
-
 
     const renderStatus = function (data, type, row) {
         if(data === 0) {
@@ -66,14 +56,14 @@ export function todoListHandler() {
 
     $(document).ready(function () {
         // ListDatatable
-        todoListDatatable = jQuery('#todoListDatatable').DataTable({
+        taskListDatatable = jQuery('#taskListDatatable').DataTable({
             "order": [
                 [1, "asc"]
             ],
             "processing": true,
             "serverSide": true,
             "initComplete": function (settings, json) {
-                jQuery(todoListDatatable).show();
+                jQuery(taskListDatatable).show();
             },
             "select": true,
             "bFilter": false,
@@ -99,13 +89,10 @@ export function todoListHandler() {
                         let updateBtn = ` <button class="btn btn-warning btn-sm btn_updateTask" data-taskID="${data}">Update</button>`;
                         let deleteBtn = ` <button class="btn btn-danger btn-sm btn_deleteTask" data-taskID="${data}">Delete</button>`;
 
-
-
                         return `
                         ${updateBtn}&ensp;
                         ${deleteBtn}
-                        
-                        
+
                     `;
                     }
                 }
@@ -116,7 +103,7 @@ export function todoListHandler() {
             },
             "ajax": {
                 "type": 'POST',
-                "url": '/todolist/todo_list_datatables',
+                "url": '/tasklist/task_list_datatables',
                 "contentType": 'application/json; charset=utf-8',
                 "dataType": 'json',
                 "dataSrc": "data",
@@ -130,44 +117,44 @@ export function todoListHandler() {
         // Search Text
         $('#searchText').on('keydown', function (e) {
             if (e.keyCode === 13) {
-                todoListDatatable.ajax.reload();
+                taskListDatatable.ajax.reload();
             }
         }); // Search Text
 
 
         // Delete Task
         $(document).on('click', '.btn_deleteTask', function () {
-            let taskID = $('.btn_updateTask').attr('data-taskID');
+            const taskID = $(this).attr('data-taskID');
 
 
-            $.post('/todolist/delete_task', {
+            $.post('/tasklist/delete_task', {
                 taskID: taskID
             })
                 .done(function () {
-                    todoListDatatable.ajax.reload();
-
-                })
-                .fail(function (error) {
-                    //console.log(error);
-                });
-        });  // Delete Contact
-
-
-        // Delete Task
-        $(document).on('click', '.btn_updateTask', function () {
-            let taskID = $('.btn_updateTask').attr('data-taskID');
-
-            $.post('/todolist/update_task', {
-                taskID : taskID
-            })
-                .done(function () {
-                    todoListDatatable.ajax.reload();
+                    taskListDatatable.ajax.reload();
 
                 })
                 .fail(function (error) {
                     console.log(error);
                 });
-        });  // Delete Contact
+        });  // Delete Task
+
+
+        // Update Task
+        $(document).on('click', '.btn_updateTask', function () {
+            let taskID = $(this).attr('data-taskID');
+
+            $.post('/tasklist/update_task', {
+                taskID : taskID
+            })
+                .done(function () {
+                    taskListDatatable.ajax.reload();
+
+                })
+                .fail(function (error) {
+                    console.log(error);
+                });
+        });  // Update Contact
 
 
 

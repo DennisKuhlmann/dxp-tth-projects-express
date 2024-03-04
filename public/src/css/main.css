@@ -71,24 +71,16 @@ body {
 
 
 /* To Do Input & Add Button  */
-#toDoContent {
+#taskContent {
     width: 500px;
     border: 2px solid var(--dxp-darkmagenta);
 }
 
-#addToDo {
+#addTask {
     background-color: var(--dxp-darkmagenta);
     color: white;
     width: 120px;
 }
-
-
-.switch-label   {
-    color: white;
-}
-
-
-
 
 
 
@@ -107,21 +99,21 @@ body {
     border: 2px solid var(--dxp-darkmagenta);
 }
 
-#todoListDatatable_length {
+#taskListDatatable_length {
     color: white !important;
     margin-bottom: 20px;
 }
 
-#todoListDatatable_info {
+#taskListDatatable_info {
     color: white !important;
 }
 
-#todoListDatatable_previous, #todoListDatatable_next {
+#taskListDatatable_previous, #taskListDatatable_next {
     color: white !important;
 }
 
 /* set tds vertical middle */
-#todoListDatatable td {
+#taskListDatatable td {
    vertical-align: middle;
 }
 

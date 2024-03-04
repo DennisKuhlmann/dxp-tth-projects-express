@@ -1,9 +1,9 @@
-<%- include('../utils/head', {pageTitle: 'Home'}); -%>
+<%- include('../utils/head', {pageTitle: 'Task List'}); -%>
 <%- include('../utils/navigation'); -%>
 
 <body>
 
-<h1 class="text-center mt-3" style="color: white;">My To Do List</h1>
+<h1 class="text-center mt-3" style="color: white;">My Task List</h1>
 
 
 
@@ -15,26 +15,18 @@
 
 
     <div class="container d-flex justify-content-center mt-3">
-        <label for="toDoContent"></label>
-        <input type="text" class="form-control" id="toDoContent" placeholder="Add a to do">
-        <button class="btn ms-1" id="addToDo">Add To Do</button>
+        <label for="taskContent"></label>
+        <input type="text" class="form-control" id="taskContent" placeholder="Add a Task">
+        <button class="btn ms-1" id="addTask">Add Task</button>
     </div>
 
-<div id="switchContent">
-
-    <div class="container mt-3 d-flex justify-content-center">
-        <ul id="ul_toDo">
-            <!-- LI -->
-        </ul>
-
-    </div>
 
     <div class="container">
         <!-- Main Search Row -->
             <!-- <block Search Row 1 > -->
             <div class="row">
                 <!-- Search Field -->
-                <div class="col-lg-6 col-md-6 col-sm-12 mt-2">
+                <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
                     <div class="form-group search-field w-100">
                         <label for="searchText"></label>
                         <input type="text" class="form-control rounded filter mt-1" id="searchText" placeholder="Search Task">
@@ -46,10 +38,10 @@
     </div>
 
     <div class="container mt-3 mb-5">
-        <table class="table table-dark table-striped todoListDatatable" id="todoListDatatable" data-page-length="10">
+        <table class="table table-dark table-striped taskListDatatable" id="taskListDatatable" data-page-length="10">
             <thead>
             <tr>
-                <th>Task name</th>
+                <th>Task</th>
                 <th>Creation Date</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -58,7 +50,7 @@
         </table>
     </div>
 
-</div>
+
 
 
 
