@@ -4,6 +4,9 @@ The rights are owned by the creator.</h3>
 
 ### How to use this project:
 
+<li>Run npm install</li>
+<li>Rename the .env_example file to .env </li>
+<li>Check your database connection </li>
 <li>Create a database</li>
 <li>Create a table with name <b>tab_items</b></li>
 
