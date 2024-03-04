@@ -37,7 +37,6 @@ router.post('/todo_list_datatables', (req, res) => {
 
     // Create an array with your column names in the order they are arranged in DataTables
     let columns = [
-        'dbf_int_index',
         'dbf_str_name',
         'dbf_datetime_created'
     ];
@@ -100,6 +99,19 @@ router.post('/todo_list_datatables', (req, res) => {
 });
 
 
+router.post("/delete-todo", (req, res) => {
+    const itemID = req.body.dbf_int_index;
+    const query = `DELETE FROM tab_items WHERE dbf_int_index = ${itemID}`;
+
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Database error: ' + err.message });
+        }
+
+        res.json({ message: "To Do deleted successfully", data: result });
+    });
+});
 
 
 module.exports = router;
