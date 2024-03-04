@@ -103,8 +103,9 @@ export function todoListHandler() {
                     "data": "dbf_int_index",
                     "sortable": false,
                     "render": function (data, type, row) {
+                        let deleteBtn = ` <a data-userID="${data}" type="button" class="btn btn-danger btn-sm btn_deleteTask">Delete</a>`
                         return `
-                       <a data-userID="${data}" type="button" class="btn btn-danger btn-sm delete-btn">Delete</a>
+                        ${deleteBtn}
                     `;
                     }
                 }
