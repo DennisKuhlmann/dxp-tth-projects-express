@@ -6,36 +6,37 @@
 <h1 class="text-center mt-3" style="color: white;">My Task List</h1>
 
 
+<div class="container">
 
+    <!-- Main Search Row -->
+    <!-- <block Search Row 1 > -->
+    <div class="row">
+        <!-- Search & Add Task Field -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
 
-<div class="container d-flex justify-content-center mt-3" >
-             <!-- Error Inlcludes -->
-             <%- include('../utils/error'); -%>
+            <%- include('../utils/error'); -%>
+
+            <div class="d-flex justify-content-between mt-3">
+                <!-- Add Task -->
+                <label for="taskContent"></label>
+                <input type="text" class="form-control" id="taskContent" placeholder="Add a Task">
+                <button class="btn ms-1" id="addTask">Add Task</button>
+            </div>
+
+            <div class="form-group search-field w-100">
+                <label for="searchText"></label>
+                <input type="text" class="form-control rounded filter" id="searchText" placeholder="Search Task">
+            </div>
+        </div><!-- </block Search Field > -->
+
+    </div><!-- </block Search Row 1 > -->
 </div>
 
 
-    <div class="container d-flex justify-content-center mt-3">
-        <label for="taskContent"></label>
-        <input type="text" class="form-control" id="taskContent" placeholder="Add a Task">
-        <button class="btn ms-1" id="addTask">Add Task</button>
-    </div>
 
 
-    <div class="container">
-        <!-- Main Search Row -->
-            <!-- <block Search Row 1 > -->
-            <div class="row">
-                <!-- Search Field -->
-                <div class="col-lg-3 col-md-6 col-sm-12 mt-2">
-                    <div class="form-group search-field w-100">
-                        <label for="searchText"></label>
-                        <input type="text" class="form-control rounded filter mt-1" id="searchText" placeholder="Search Task">
 
-                    </div>
-                </div><!-- </block Search Field > -->
-            </div><!-- </block Search Row 1 > -->
 
-    </div>
 
     <div class="container mt-3 mb-5">
         <table class="table table-dark table-striped taskListDatatable" id="taskListDatatable" data-page-length="10">
