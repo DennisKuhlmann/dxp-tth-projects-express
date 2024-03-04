@@ -108,8 +108,6 @@ router.post("/delete-todo", (req, res) => {
             console.error(err);
             return res.status(500).json({ error: 'Database error: ' + err.message });
         }
-
-        res.json({ message: "To Do deleted successfully", data: result });
     });
 });
 
