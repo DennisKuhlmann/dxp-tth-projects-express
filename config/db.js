@@ -1,14 +1,10 @@
-// config to handle database connection use or not
-const databaseAvailable = true;
-
-
 require('dotenv').config();
 const mysql = require('mysql2');
 
 
 let db;
 
-if(databaseAvailable) {
+
     db = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
@@ -23,7 +19,7 @@ if(databaseAvailable) {
         }
         console.log('Successfully connected to the database');
     });
-}
+
 
 
 module.exports = db;

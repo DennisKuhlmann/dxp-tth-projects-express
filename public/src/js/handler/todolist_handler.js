@@ -1,5 +1,5 @@
 // config to handle, if database is available
-let databaseAvailable = true;
+
 
 // Declare your variable outside of both click and ready functions
 let todoListDatatable;
@@ -16,7 +16,7 @@ export function todoListHandler() {
     button.on('click', function() {
         // if input is empty
         if(input.val() !== "") {
-            if(databaseAvailable) {
+
                 jQuery.post('/todolist/addtodo', {
                     "item": input.val()
                 })
@@ -30,16 +30,9 @@ export function todoListHandler() {
                     .fail(function(jqXHR, textStatus, errorMessage) {
                         statusTexts.failed.text(errorMessage).css("display", "block").delay(2000).slideUp(3000);
                     });
-            } else {
-                ul.append(`<li> ${input.val()} </li>`);
-                console.log("ToDo added");
-                statusTexts.success.text('To-Do added!').css("display", "block").delay(2000).slideUp(3000);
-                input.val("");
-            }// if databaseAvailable
+            }
 
-        } else {
-            statusTexts.failed.text('Please enter a To-Do!').css("display", "block").delay(2000).slideUp(3000);
-        } // if input is empty
+
 
     }); // button on click
 
@@ -54,7 +47,7 @@ export function todoListHandler() {
 
     const renderStatus = function (data, type, row) {
         if(data === 0) {
-            return 'In Progress';
+            return `In Progress`;
         } else {
             return 'Finished';
         }
@@ -88,7 +81,7 @@ export function todoListHandler() {
             "bPaginate": true,
             "pagingType": "simple",
             "columns": [
-                {"data": "dbf_str_name"},
+                {"data": "dbf_str_task"},
                 {
                     "data": "dbf_datetime_created",
                     "render": renderDate
@@ -103,9 +96,16 @@ export function todoListHandler() {
                     "data": "dbf_int_index",
                     "sortable": false,
                     "render": function (data, type, row) {
-                        let deleteBtn = ` <a data-userID="${data}" type="button" class="btn btn-danger btn-sm btn_deleteTask">Delete</a>`
+                        let updateBtn = ` <button class="btn btn-warning btn-sm btn_updateTask" >Update</button>`;
+                        let deleteBtn = ` <button class="btn btn-danger btn-sm btn_deleteTask">Delete</button>`;
+
+
+
                         return `
+                        ${updateBtn}&ensp;
                         ${deleteBtn}
+                        
+                        
                     `;
                     }
                 }
@@ -135,7 +135,7 @@ export function todoListHandler() {
         }); // Search Text
 
 
-        // Delete Contact
+        // Delete Task
         $(document).on('click', '.btn_deleteTask', function () {
             const row = todoListDatatable.row( $(this).parents('tr') );
             const rowData = row.data();
