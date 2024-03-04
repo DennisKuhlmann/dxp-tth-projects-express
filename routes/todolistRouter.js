@@ -12,8 +12,8 @@ router.post('/addtodo', (req, res) => {
 
     let query = `INSERT INTO 
                         tab_items 
-                        SET 
-                            dbf_str_name = ?`;
+                        SET
+                            dbf_str_task = ?`;
     db.query(query, [item], function(error, results, fields) {
         if (error) {
             console.error('Error executing the query', error);
@@ -37,7 +37,7 @@ router.post('/todo_list_datatables', (req, res) => {
 
     // Create an array with your column names in the order they are arranged in DataTables
     let columns = [
-        'dbf_str_name',
+        'dbf_str_task',
         'dbf_datetime_created',
         'dbf_int_status'
     ];
@@ -56,7 +56,7 @@ router.post('/todo_list_datatables', (req, res) => {
 
     if (searchValue) {
         query += ` WHERE 
-                        dbf_str_name LIKE '%${searchValue}%' 
+                        dbf_str_task LIKE '%${searchValue}%' 
                 `;
     }
     query += ` ORDER BY ${orderColumn} ${orderDirection} LIMIT ${start}, ${length}`;
