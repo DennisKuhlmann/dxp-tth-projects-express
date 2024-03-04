@@ -51,6 +51,26 @@ export function todoListHandler() {
         switchContent.toggle();
     });
 
+
+    const renderStatus = function (data, type, row) {
+        if(data === 0) {
+            return 'In Progress';
+        } else {
+            return 'Finished';
+        }
+    };
+
+    let localTime = 'de-De'; /// switch to your location => America: 'en-US', Germany: 'de-De'
+    const renderDate = function (data, type, row) {
+        let date = new Date(data);
+        // Format date as dd.mm.yyyy
+        return date.toLocaleDateString(localTime, {
+            day: '2-digit', //
+            month: '2-digit',
+            year: 'numeric'
+        });
+    };
+
     $(document).ready(function () {
         // ListDatatable
         todoListDatatable = jQuery('#todoListDatatable').DataTable({
