@@ -97,6 +97,11 @@ body {
 .search-field {
     width: 500px;
     color: white;
+
+}
+
+#searchText {
+    border: 2px solid var(--dxp-darkmagenta);
 }
 
 #todoListDatatable_length {
