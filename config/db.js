@@ -1,5 +1,5 @@
 // config to handle database connection use or not
-const databaseAvailable = false;
+const databaseAvailable = true;
 
 
 require('dotenv').config();
