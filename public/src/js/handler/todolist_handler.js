@@ -90,6 +90,10 @@ export function todoListHandler() {
             "columns": [
                 {"data": "dbf_str_name"},
                 {"data": "dbf_datetime_created"},
+                {
+                    "data": "dbf_datetime_created",
+                    "render": renderDate
+                },
 
                 // Add new column for action buttons
                 {
