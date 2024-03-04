@@ -89,10 +89,13 @@ export function todoListHandler() {
             "pagingType": "simple",
             "columns": [
                 {"data": "dbf_str_name"},
-                {"data": "dbf_datetime_created"},
                 {
                     "data": "dbf_datetime_created",
                     "render": renderDate
+                },
+                {
+                    "data": "dbf_int_status",
+                    "render": renderStatus
                 },
 
                 // Add new column for action buttons
@@ -132,13 +135,13 @@ export function todoListHandler() {
 
 
         // Delete Contact
-        $(document).on('click', '.delete-btn', function () {
+        $(document).on('click', '.btn_deleteTask', function () {
             const row = todoListDatatable.row( $(this).parents('tr') );
             const rowData = row.data();
             const itemID = rowData.dbf_int_index;
 
-            $.post('/todolist/delete-todo', {dbf_int_index: itemID})
-                .done(function (data) {
+            $.post('/todolist/delete_task', {dbf_int_index: itemID})
+                .done(function () {
                     todoListDatatable.ajax.reload();
 
                 })

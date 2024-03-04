@@ -88,7 +88,7 @@ router.post('/todo_list_datatables', (req, res) => {
 });
 
 
-router.post("/delete-todo", (req, res) => {
+router.post("/delete_task", (req, res) => {
     const itemID = req.body.dbf_int_index;
     const query = `DELETE FROM tab_items WHERE dbf_int_index = ${itemID}`;
 
