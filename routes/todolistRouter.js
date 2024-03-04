@@ -38,7 +38,8 @@ router.post('/todo_list_datatables', (req, res) => {
     // Create an array with your column names in the order they are arranged in DataTables
     let columns = [
         'dbf_str_name',
-        'dbf_datetime_created'
+        'dbf_datetime_created',
+        'dbf_int_status'
     ];
 
     let orderColumnIndex = req.body['order[0][column]'];
