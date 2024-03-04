@@ -81,7 +81,28 @@ body {
 
 
 
+/* -------------------------------------- */
+/* Datatables */
 
+
+
+.search-field {
+    width: 500px;
+    color: white;
+}
+
+#todoListDatatable_length {
+    color: white !important;
+    margin-bottom: 20px;
+}
+
+#todoListDatatable_info {
+    color: white !important;
+}
+
+#todoListDatatable_previous, #todoListDatatable_next {
+    color: white !important;
+}
 
 
 
