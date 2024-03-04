@@ -55,7 +55,7 @@ export function todoListHandler() {
         // ListDatatable
         todoListDatatable = jQuery('#todoListDatatable').DataTable({
             "order": [
-                [0, "desc"]
+                [1, "asc"]
             ],
             "processing": true,
             "serverSide": true,
@@ -68,9 +68,19 @@ export function todoListHandler() {
             "bPaginate": true,
             "pagingType": "simple",
             "columns": [
-                {"data": "dbf_int_index"},
                 {"data": "dbf_str_name"},
-                {"data": "dbf_datetime_created"}
+                {"data": "dbf_datetime_created"},
+
+                // Add new column for action buttons
+                {
+                    "data": "dbf_int_index",
+                    "sortable": false,
+                    "render": function (data, type, row) {
+                        return `
+                       <a data-userID="${data}" type="button" class="btn btn-danger btn-sm delete-btn">Delete</a>
+                    `;
+                    }
+                }
 
             ],
             "language": {
@@ -95,6 +105,26 @@ export function todoListHandler() {
                 todoListDatatable.ajax.reload();
             }
         }); // Search Text
+
+
+        // Delete Contact
+        $(document).on('click', '.delete-btn', function () {
+            const row = todoListDatatable.row( $(this).parents('tr') );
+            const rowData = row.data();
+            const itemID = rowData.dbf_int_index;
+
+            $.post('/todolist/delete-todo', {dbf_int_index: itemID})
+                .done(function (data) {
+                    todoListDatatable.ajax.reload();
+
+                })
+                .fail(function (error) {
+                    //console.log(error);
+                });
+        });  // Delete Contact
+
+
+
 
     }); // document ready
 } // todoListHandler
