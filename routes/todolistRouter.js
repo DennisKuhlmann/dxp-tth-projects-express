@@ -75,6 +75,18 @@ router.post('/todo_list_datatables', (req, res) => {
                     console.error(err);
                     res.status(500).json({ error: 'Database error: ' + err.message });
                 } else {
+                    // change the date format for each row
+                    let localTime = 'de-De'; // switch to your location => America: 'en-US', Germany: 'de-De'
+                    rows.forEach(row => {
+                        let date = new Date(row.dbf_datetime_created);
+                        // Format date as dd.mm.yyyy
+                        row.dbf_datetime_created = date.toLocaleDateString(localTime, {
+                            day: '2-digit', // Always display as two-digit number
+                            month: '2-digit', // Always display as two-digit number
+                            year: 'numeric'
+                        });
+                    });
+
                     res.json({
                         draw: draw,
                         recordsTotal: recordsTotal,
