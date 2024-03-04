@@ -61,10 +61,13 @@ body {
     background-color: transparent;
 }
 
-
 /* ====== END Navigation ===== */
 
-/* A */
+
+
+
+
+/* To Do Input & Add Button  */
 #toDoContent {
     width: 500px;
     border: 2px solid var(--dxp-darkmagenta);
@@ -74,6 +77,11 @@ body {
     background-color: var(--dxp-darkmagenta);
     color: white;
     width: 120px;
+}
+
+
+.switch-label   {
+    color: white;
 }
 
 
