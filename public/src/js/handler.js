@@ -1,3 +1,3 @@
-import {addToDo} from "./handler/todolist_handler.js";
+import {todoListHandler} from "./handler/todolist_handler.js";
 
-addToDo();
+todoListHandler();
