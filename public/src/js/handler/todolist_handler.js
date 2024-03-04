@@ -96,8 +96,8 @@ export function todoListHandler() {
                     "data": "dbf_int_index",
                     "sortable": false,
                     "render": function (data, type, row) {
-                        let updateBtn = ` <button class="btn btn-warning btn-sm btn_updateTask" >Update</button>`;
-                        let deleteBtn = ` <button class="btn btn-danger btn-sm btn_deleteTask">Delete</button>`;
+                        let updateBtn = ` <button class="btn btn-warning btn-sm btn_updateTask" data-taskID="${data}">Update</button>`;
+                        let deleteBtn = ` <button class="btn btn-danger btn-sm btn_deleteTask" data-taskID="${data}">Delete</button>`;
 
 
 
@@ -137,17 +137,35 @@ export function todoListHandler() {
 
         // Delete Task
         $(document).on('click', '.btn_deleteTask', function () {
-            const row = todoListDatatable.row( $(this).parents('tr') );
-            const rowData = row.data();
-            const itemID = rowData.dbf_int_index;
+            let taskID = $('.btn_updateTask').attr('data-taskID');
 
-            $.post('/todolist/delete_task', {dbf_int_index: itemID})
+
+            $.post('/todolist/delete_task', {
+                taskID: taskID
+            })
                 .done(function () {
                     todoListDatatable.ajax.reload();
 
                 })
                 .fail(function (error) {
                     //console.log(error);
+                });
+        });  // Delete Contact
+
+
+        // Delete Task
+        $(document).on('click', '.btn_updateTask', function () {
+            let taskID = $('.btn_updateTask').attr('data-taskID');
+
+            $.post('/todolist/update_task', {
+                taskID : taskID
+            })
+                .done(function () {
+                    todoListDatatable.ajax.reload();
+
+                })
+                .fail(function (error) {
+                    console.log(error);
                 });
         });  // Delete Contact
 

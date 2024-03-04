@@ -90,8 +90,22 @@ router.post('/todo_list_datatables', (req, res) => {
 
 
 router.post("/delete_task", (req, res) => {
-    const itemID = req.body.dbf_int_index;
-    const query = `DELETE FROM tab_items WHERE dbf_int_index = ${itemID}`;
+    const taskID = req.body.taskID;
+    const query = `DELETE FROM tab_items WHERE dbf_int_index = ${taskID}`;
+
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Database error: ' + err.message });
+        }
+        res.json({ message: "To Do deleted successfully", data: result });
+    });
+});
+
+
+router.post("/update_task", (req, res) => {
+    const taskID = req.body.taskID;
+    const query = `UPDATE tab_items SET dbf_int_status = 1 WHERE dbf_int_index = ${taskID}`;
 
     db.query(query, (err, result) => {
         if (err) {
