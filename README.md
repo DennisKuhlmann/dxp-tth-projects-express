@@ -14,7 +14,8 @@ The rights are owned by the creator.</h3>
 ```
 CREATE TABLE `tab_items` (
   `dbf_int_index` int(11) NOT NULL AUTO_INCREMENT,
-  `dbf_str_name` varchar(255) DEFAULT NULL,
+  `dbf_str_task` varchar(255) DEFAULT NULL,
   `dbf_datetime_created` datetime DEFAULT current_timestamp(),
+  `dbf_int_status` int(11) DEFAULT 0 COMMENT '0 = in Progress; 1= done',
   PRIMARY KEY (`dbf_int_index`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
