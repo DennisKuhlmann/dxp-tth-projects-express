@@ -6,26 +6,7 @@ router.get("/", (req, res) => {
     res.render('pages/task_list');
 });
 
-router.post('/addtask', (req, res) => {
-   let item = req.body.item;
 
-
-    let query = `INSERT INTO 
-                        tab_tasks 
-                        SET
-                            dbf_str_task = ?`;
-    db.query(query, [item], function(error, results, fields) {
-        if (error) {
-            console.error('Error executing the query', error);
-            res.status(500).send('Error executing the query');
-        } else {
-            console.log('Item added successfully');
-            res.send('Item added successfully');
-
-        }
-    });
-
-});
 
 // setup datatables
 router.post('/task_list_datatables', (req, res) => {
@@ -88,6 +69,29 @@ router.post('/task_list_datatables', (req, res) => {
     });
 });
 
+// ADD - Task
+router.post('/addtask', (req, res) => {
+    let item = req.body.item;
+
+
+    let query = `INSERT INTO 
+                        tab_tasks 
+                        SET
+                            dbf_str_task = ?`;
+    db.query(query, [item], function(error, results, fields) {
+        if (error) {
+            console.error('Error executing the query', error);
+            res.status(500).send('Error executing the query');
+        } else {
+            console.log('Item added successfully');
+            res.send('Item added successfully');
+
+        }
+    });
+
+});
+
+// SOFTDELETE - Task
 router.post("/softdelete_task", (req, res) => {
     const taskID = req.body.taskID;
     const query = `UPDATE tab_tasks SET dbf_int_soft_delete = 1 WHERE dbf_int_index = ${taskID}`;
@@ -101,6 +105,7 @@ router.post("/softdelete_task", (req, res) => {
     });
 });
 
+// Delete (OUTCOMMENTED)
 /*
 router.post("/delete_task", (req, res) => {
     const taskID = req.body.taskID;
@@ -118,6 +123,7 @@ router.post("/delete_task", (req, res) => {
  */
 
 
+// UPDATE - Task
 router.post("/update_task", (req, res) => {
     const taskID = req.body.taskID;
     const query = `UPDATE tab_tasks SET dbf_int_status = 1 WHERE dbf_int_index = ${taskID}`;
