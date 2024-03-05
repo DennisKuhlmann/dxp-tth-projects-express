@@ -63,7 +63,7 @@ router.post('/task_list_datatables', (req, res) => {
 
 
     // New code to get the total count for recordsTotal and recordsFiltered
-    db.query("SELECT COUNT(*) as total FROM tab_tasks", (err, result) => {
+    db.query("SELECT COUNT(*) as total FROM tab_tasks WHERE dbf_int_soft_delete = 0", (err, result) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Database error: ' + err.message });
@@ -90,7 +90,7 @@ router.post('/task_list_datatables', (req, res) => {
 
 router.post("/softdelete_task", (req, res) => {
     const taskID = req.body.taskID;
-    const query = `UPDATE tab_tasks SET dbf_int_soft_delete = 1  WHERE dbf_int_index = ${taskID}`;
+    const query = `UPDATE tab_tasks SET dbf_int_soft_delete = 1 WHERE dbf_int_index = ${taskID}`;
 
     db.query(query, (err, result) => {
         if (err) {
