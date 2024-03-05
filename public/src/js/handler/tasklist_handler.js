@@ -127,7 +127,7 @@ export function taskListHandler() {
             const taskID = $(this).attr('data-taskID');
 
 
-            $.post('/tasklist/delete_task', {
+            $.post('/tasklist/softdelete_task', {
                 taskID: taskID
             })
                 .done(function () {

@@ -11,7 +11,7 @@ router.post('/addtask', (req, res) => {
 
 
     let query = `INSERT INTO 
-                        tab_items 
+                        tab_tasks 
                         SET
                             dbf_str_task = ?`;
     db.query(query, [item], function(error, results, fields) {
@@ -52,7 +52,7 @@ router.post('/task_list_datatables', (req, res) => {
     }
 
     // Use the values to modify your database query
-    let query = 'SELECT * FROM tab_items';
+    let query = 'SELECT * FROM tab_tasks WHERE dbf_int_soft_delete = 0';
 
     if (searchValue) {
         query += ` WHERE 
@@ -63,7 +63,7 @@ router.post('/task_list_datatables', (req, res) => {
 
 
     // New code to get the total count for recordsTotal and recordsFiltered
-    db.query("SELECT COUNT(*) as total FROM tab_items", (err, result) => {
+    db.query("SELECT COUNT(*) as total FROM tab_tasks", (err, result) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Database error: ' + err.message });
@@ -88,10 +88,9 @@ router.post('/task_list_datatables', (req, res) => {
     });
 });
 
-
-router.post("/delete_task", (req, res) => {
+router.post("/softdelete_task", (req, res) => {
     const taskID = req.body.taskID;
-    const query = `DELETE FROM tab_items WHERE dbf_int_index = ${taskID}`;
+    const query = `UPDATE tab_tasks SET dbf_int_soft_delete = 1  WHERE dbf_int_index = ${taskID}`;
 
     db.query(query, (err, result) => {
         if (err) {
@@ -102,10 +101,26 @@ router.post("/delete_task", (req, res) => {
     });
 });
 
+/*
+router.post("/delete_task", (req, res) => {
+    const taskID = req.body.taskID;
+    const query = `DELETE FROM tab_tasks WHERE dbf_int_index = ${taskID}`;
+
+    db.query(query, (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Database error: ' + err.message });
+        }
+        res.json({ message: "To Do deleted successfully", data: result });
+    });
+});
+
+ */
+
 
 router.post("/update_task", (req, res) => {
     const taskID = req.body.taskID;
-    const query = `UPDATE tab_items SET dbf_int_status = 1 WHERE dbf_int_index = ${taskID}`;
+    const query = `UPDATE tab_tasks SET dbf_int_status = 1 WHERE dbf_int_index = ${taskID}`;
 
     db.query(query, (err, result) => {
         if (err) {
