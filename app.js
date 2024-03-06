@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const crypto = require('crypto');
 let app = express();
 
+
 // Set view engine to ejs
 app.set("view engine", "ejs");
 
@@ -33,7 +34,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         sameSite: 'strict',
-        secure: false, // später auf true setzen, da wir das ganze über HTTPS setzen
+        secure: true, // später auf true setzen, da wir das ganze über HTTPS setzen
     },
 }));
 app.use(express.json());
@@ -52,7 +53,7 @@ app.use("/tasklist", tasklistRouter);
 
 
 // CREATE A SERVER
-const port = 1138;
+const port = 3000;
 app.listen(port, () => {
     console.log(`May the code be with you on the Startrack to development excellence! 🌟🚀 The Server is running at: http://localhost:${port}`);
 });
