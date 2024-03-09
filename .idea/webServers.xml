@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="ab8ff2f7-c005-4e09-b935-5805247cb5c3" name="homedk">
-        <fileTransfer rootFolder="/var/www/todolist/" accessType="SFTP" host="194.9.6.101" port="22" sshConfigId="5ea59d6a-f417-4184-a35c-56665ce8018d" sshConfig="homedk">
+        <fileTransfer rootFolder="/var/www/html/dxp_tt_projects" accessType="SFTP" host="194.9.6.101" port="22" sshConfigId="5ea59d6a-f417-4184-a35c-56665ce8018d" sshConfig="homedk">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" isUseRsync="true" isUseSudo="true" />
           </advancedOptions>

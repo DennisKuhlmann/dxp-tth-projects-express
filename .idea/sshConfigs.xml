@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="194.9.6.101" id="5ea59d6a-f417-4184-a35c-56665ce8018d" port="22" customName="homedk" nameFormat="CUSTOM" username="homedk" useOpenSSHConfig="true">
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;hostKeyVerifier&quot;:{&quot;hashKnownHosts&quot;:true,&quot;stringHostKeyChecking&quot;:&quot;ASK&quot;},&quot;serverAliveInterval&quot;:300}" host="194.9.6.101" id="5ea59d6a-f417-4184-a35c-56665ce8018d" port="22" customName="homedk" nameFormat="CUSTOM" username="root" useOpenSSHConfig="true">
         <option name="customName" value="homedk" />
       </sshConfig>
     </configs>
