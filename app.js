@@ -34,7 +34,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         sameSite: 'strict',
-        secure: true, // später auf true setzen, da wir das ganze über HTTPS setzen
+        secure: true,
     },
 }));
 app.use(express.json());
