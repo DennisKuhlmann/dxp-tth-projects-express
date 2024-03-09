@@ -18,7 +18,9 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", 'https://code.jquery.com', 'https://cdn.jsdelivr.net', 'https://cdn.datatables.net']
+            scriptSrc: ["'self'", 'https://code.jquery.com', 'https://cdn.jsdelivr.net', 'https://cdn.datatables.net'],
+            frameSrc: ["'self'", "https://www.twitch.tv", "https://player.twitch.tv"],
+            objectSrc: ["'self'", "https://player.twitch.tv"]
         },
     },
     hidePoweredBy: true,
@@ -35,6 +37,7 @@ app.use(session({
     cookie: {
         sameSite: 'strict',
         secure: true,
+        partitioned: true
     },
 }));
 app.use(express.json());
@@ -45,11 +48,14 @@ app.use(express.urlencoded({ extended: true }));
 // Router
 const indexRouter = require("./routes/indexRouter");
 const tasklistRouter = require("./routes/tasklistRouter");
+const streamRouter = require("./routes/streamRouter");
 
 
 
 app.use("/", indexRouter);
 app.use("/tasklist", tasklistRouter);
+app.use("/stream", streamRouter);
+
 
 
 // CREATE A SERVER

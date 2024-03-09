@@ -66,6 +66,11 @@ body {
 
 /* ====== END Navigation ===== */
 
+.stream-iframe iframe {
+    border: 1px solid var(--dxp-white);
+    border-radius: 10px;
+}
+
 
 
 
