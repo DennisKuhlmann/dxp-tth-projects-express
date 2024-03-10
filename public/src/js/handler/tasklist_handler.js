@@ -1,6 +1,4 @@
 // config to handle, if database is available
-
-
 // Declare your variable outside of both click and ready functions
 let taskListDatatable;
 
@@ -43,15 +41,10 @@ export function taskListHandler() {
         }
     };
 
-    let localTime = 'de-De'; /// switch to your location => America: 'en-US', Germany: 'de-De'
     const renderDate = function (data, type, row) {
-        let date = new Date(data);
+        let date = moment(data);
         // Format date as dd.mm.yyyy
-        return date.toLocaleDateString(localTime, {
-            day: '2-digit', //
-            month: '2-digit',
-            year: 'numeric'
-        });
+        return date.format('MM.DD.YYYY');
     };
 
     $(document).ready(function () {
