@@ -44,7 +44,7 @@ export function taskListHandler() {
     const renderDate = function (data, type, row) {
         let date = moment(data);
         // Format date as dd.mm.yyyy
-        return date.format('MM.DD.YYYY');
+        return date.format('DD.MM.YYYY');
     };
 
     $(document).ready(function () {
